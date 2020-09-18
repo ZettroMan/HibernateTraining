@@ -13,6 +13,9 @@ public class Product {
     private String title;
     private int price;
 
+    @OneToMany(mappedBy = "product")
+    private List<Purchase> purchases;
+
     public Product() {
     }
 
@@ -43,6 +46,14 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 
     @Override

@@ -16,32 +16,48 @@ public class ClientApp {
         try (SessionFactory factory = new Configuration()
                 .configure("configs/hibernate.cfg.xml")
                 .buildSessionFactory()) {
-            init(factory);  // initialize database. Database should be empty!
+
+            // Initialize database (adding 10 customers and 10 products). DATABASE SHOULD BE EMPTY!
+            initDatabase(factory);
             Random random = new Random();
-            // making some purchases
+
+            // Making some purchases
+            System.out.println("\n====================== Making some purchases ======================");
             for (int i = 0; i < 20; i++) {
                 Long customerId = (long) (random.nextInt(10) + 1);
                 Long productId = (long) (random.nextInt(10) + 1);
                 int quantity = random.nextInt(5) + 1;
                 makePurchase(factory, customerId, productId, quantity);
             }
-            // listing current purchases in database for every customer
+
+            // Listing purchases stored in database for every customer
+            System.out.println("\n====================== Listing purchases from DB ======================");
             for (long i = 1L; i <= 10L; i++) {
                 viewCustomerPurchases(factory, i);
             }
 
-            // let's remove some products form DB
-            for (long i = 1L; i < 10L; i++) {
+            // Listing customers who have bought every distinct product
+            System.out.println("\n=================== Listing customers of every product ================");
+            for (long i = 1L; i <= 10L; i++) {
+                viewProductCustomers(factory, i);
+            }
+
+            // Let's remove some products form DB. Only unclaimed products will be removed indeed.
+            // If the product was purchased by someone the database will not allow to delete it.
+            System.out.println("\n=================== Removing products from DB ================");
+            for (long i = 1L; i <= 10L; i++) {
                 removeProduct(factory, i);
             }
 
-            // let's remove some customers
+            // Let's remove some customers. The database is configured for cascading deletion of purchases.
+            System.out.println("\n============ Removing customers with Id = { 3, 5, 8} ================");
             removeCustomer(factory, 3L);
             removeCustomer(factory, 5L);
             removeCustomer(factory, 8L);
 
             // List purchases in DB again. All purchases of deleted customers
-            // should be eliminated
+            // should be eliminated.
+            System.out.println("\n================= Listing all purchases again ====================");
             for (long i = 1L; i <= 10L; i++) {
                 viewCustomerPurchases(factory, i);
             }
@@ -49,6 +65,7 @@ public class ClientApp {
             e.printStackTrace();
         }
     }
+
 
     private static void removeCustomer(SessionFactory factory, Long customerId) {
         try (Session session = factory.getCurrentSession()) {
@@ -90,6 +107,26 @@ public class ClientApp {
         }
     }
 
+    private static void viewProductCustomers(SessionFactory factory, Long productId) {
+        System.out.println("---------------------------------------");
+        try (Session session = factory.getCurrentSession()) {
+            session.beginTransaction();
+            Product product = session.get(Product.class, productId);
+            List<Purchase> purchases = product.getPurchases();
+            if (purchases.isEmpty()) {
+                System.out.println(product.getTitle() + " is the most miserable product. No one has bought it yet...:(");
+            } else {
+                System.out.println("Here are the customers who bought " + product.getTitle() + ":");
+                for (Purchase purchase : purchases) {
+                    System.out.println(purchase.getCustomer());
+                }
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Product with Id = " + productId + " doesn't exist or error occurred while retrieving product info");
+        }
+    }
+
     private static void makePurchase(SessionFactory factory, Long customerId, Long productId, int quantity) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
@@ -103,7 +140,7 @@ public class ClientApp {
         }
     }
 
-    private static void init(SessionFactory factory) {
+    private static void initDatabase(SessionFactory factory) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
             session.saveOrUpdate(new Customer("Bruce Willis"));
