@@ -1,0 +1,218 @@
+сент. 18, 2020 11:03:16 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {5.4.4.Final}
+сент. 18, 2020 11:03:17 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+сент. 18, 2020 11:03:19 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+сент. 18, 2020 11:03:19 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/postgres?currentSchema=hiber_z]
+сент. 18, 2020 11:03:19 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=postgres}
+сент. 18, 2020 11:03:19 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+сент. 18, 2020 11:03:19 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 8 (min=1)
+сент. 18, 2020 11:03:19 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL94Dialect
+
+====================== Making some purchases ======================
+
+====================== Listing purchases from DB ======================
+---------------------------------------
+Products bought by Bruce Willis are:
+Product: Butter 	 Price: 90 	 Quantity: 1 	  Total cost: 90
+Product: Salt 	 Price: 15 	 Quantity: 1 	  Total cost: 15
+---------------------------------------
+Products bought by Tom Cruise are:
+Product: Salt 	 Price: 15 	 Quantity: 1 	  Total cost: 15
+---------------------------------------
+Products bought by Benedict Cumberbatch are:
+Product: Milk 	 Price: 45 	 Quantity: 4 	  Total cost: 180
+Product: Juice 	 Price: 50 	 Quantity: 2 	  Total cost: 100
+Product: Sugar 	 Price: 60 	 Quantity: 4 	  Total cost: 240
+---------------------------------------
+Products bought by Daniel Radcliffe are:
+Product: Butter 	 Price: 90 	 Quantity: 2 	  Total cost: 180
+Product: Onion 	 Price: 35 	 Quantity: 1 	  Total cost: 35
+---------------------------------------
+Products bought by Christian Bale are:
+Product: Bread 	 Price: 30 	 Quantity: 4 	  Total cost: 120
+---------------------------------------
+Products bought by Tim Roth are:
+Product: Ham 	 Price: 145 	 Quantity: 4 	  Total cost: 580
+Product: Cheese 	 Price: 160 	 Quantity: 4 	  Total cost: 640
+Product: Onion 	 Price: 35 	 Quantity: 4 	  Total cost: 140
+---------------------------------------
+Products bought by Tom Hardy are:
+Product: Butter 	 Price: 90 	 Quantity: 3 	  Total cost: 270
+Product: Ham 	 Price: 145 	 Quantity: 1 	  Total cost: 145
+---------------------------------------
+Products bought by Sean Penn are:
+Product: Cheese 	 Price: 160 	 Quantity: 3 	  Total cost: 480
+Product: Juice 	 Price: 50 	 Quantity: 2 	  Total cost: 100
+---------------------------------------
+Products bought by Edward Norton are:
+Product: Butter 	 Price: 90 	 Quantity: 2 	  Total cost: 180
+Product: Ham 	 Price: 145 	 Quantity: 1 	  Total cost: 145
+Product: Juice 	 Price: 50 	 Quantity: 5 	  Total cost: 250
+Product: Sugar 	 Price: 60 	 Quantity: 2 	  Total cost: 120
+---------------------------------------
+Customer Elijah Wood hasn't made any purchase yet.
+
+=================== Listing customers of every product ================
+---------------------------------------
+Here are the customers who bought Milk:
+Customer info: [id = 3, name = Benedict Cumberbatch]
+---------------------------------------
+Here are the customers who bought Bread:
+Customer info: [id = 5, name = Christian Bale]
+---------------------------------------
+Here are the customers who bought Butter:
+Customer info: [id = 1, name = Bruce Willis]
+Customer info: [id = 4, name = Daniel Radcliffe]
+Customer info: [id = 7, name = Tom Hardy]
+Customer info: [id = 9, name = Edward Norton]
+---------------------------------------
+Here are the customers who bought Ham:
+Customer info: [id = 6, name = Tim Roth]
+Customer info: [id = 7, name = Tom Hardy]
+Customer info: [id = 9, name = Edward Norton]
+---------------------------------------
+Here are the customers who bought Cheese:
+Customer info: [id = 6, name = Tim Roth]
+Customer info: [id = 8, name = Sean Penn]
+---------------------------------------
+Here are the customers who bought Juice:
+Customer info: [id = 3, name = Benedict Cumberbatch]
+Customer info: [id = 8, name = Sean Penn]
+Customer info: [id = 9, name = Edward Norton]
+---------------------------------------
+Here are the customers who bought Salt:
+Customer info: [id = 1, name = Bruce Willis]
+Customer info: [id = 2, name = Tom Cruise]
+---------------------------------------
+Here are the customers who bought Sugar:
+Customer info: [id = 3, name = Benedict Cumberbatch]
+Customer info: [id = 9, name = Edward Norton]
+---------------------------------------
+Potatoes is the most miserable product. No one has bought it yet...:(
+---------------------------------------
+Here are the customers who bought Onion:
+Customer info: [id = 4, name = Daniel Radcliffe]
+Customer info: [id = 6, name = Tim Roth]
+
+=================== Removing products from DB ================
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(1) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(2) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+Error occurred while removing product with Id = 1
+Error occurred while removing product with Id = 2
+Error occurred while removing product with Id = 3
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(3) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(4) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(5) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+Error occurred while removing product with Id = 4
+Error occurred while removing product with Id = 5
+Error occurred while removing product with Id = 6
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(6) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(7) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(8) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+Error occurred while removing product with Id = 7
+Error occurred while removing product with Id = 8
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 23503
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: ОШИБКА: UPDATE или DELETE в таблице "products" нарушает ограничение внешнего ключа "products_fk" таблицы "purchases"
+  Подробности: На ключ (id)=(10) всё ещё есть ссылки в таблице "purchases".
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl release
+INFO: HHH000010: On release of batch it still contained JDBC statements
+Error occurred while removing product with Id = 10
+
+============ Removing customers with Id = { 3, 5, 8} ================
+
+================= Listing all purchases again ====================
+---------------------------------------
+Products bought by Bruce Willis are:
+Product: Butter 	 Price: 90 	 Quantity: 1 	  Total cost: 90
+Product: Salt 	 Price: 15 	 Quantity: 1 	  Total cost: 15
+---------------------------------------
+Products bought by Tom Cruise are:
+Product: Salt 	 Price: 15 	 Quantity: 1 	  Total cost: 15
+---------------------------------------
+Customer with Id = 3 doesn't exist or error occurred while retrieving customer info
+---------------------------------------
+Products bought by Daniel Radcliffe are:
+Product: Butter 	 Price: 90 	 Quantity: 2 	  Total cost: 180
+Product: Onion 	 Price: 35 	 Quantity: 1 	  Total cost: 35
+---------------------------------------
+Customer with Id = 5 doesn't exist or error occurred while retrieving customer info
+---------------------------------------
+Products bought by Tim Roth are:
+Product: Ham 	 Price: 145 	 Quantity: 4 	  Total cost: 580
+Product: Cheese 	 Price: 160 	 Quantity: 4 	  Total cost: 640
+Product: Onion 	 Price: 35 	 Quantity: 4 	  Total cost: 140
+---------------------------------------
+Products bought by Tom Hardy are:
+Product: Butter 	 Price: 90 	 Quantity: 3 	  Total cost: 270
+Product: Ham 	 Price: 145 	 Quantity: 1 	  Total cost: 145
+---------------------------------------
+Customer with Id = 8 doesn't exist or error occurred while retrieving customer info
+---------------------------------------
+Products bought by Edward Norton are:
+Product: Butter 	 Price: 90 	 Quantity: 2 	  Total cost: 180
+Product: Ham 	 Price: 145 	 Quantity: 1 	  Total cost: 145
+Product: Juice 	 Price: 50 	 Quantity: 5 	  Total cost: 250
+Product: Sugar 	 Price: 60 	 Quantity: 2 	  Total cost: 120
+---------------------------------------
+Customer Elijah Wood hasn't made any purchase yet.
+сент. 18, 2020 11:03:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState stop
+INFO: HHH10001008: Cleaning up connection pool [jdbc:postgresql://localhost:5432/postgres?currentSchema=hiber_z]
+
+Process finished with exit code 0
